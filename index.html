@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Young Leaders Trivia Night | Caruso Ventures | BSW 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --purple: #5B2D8E;
+  --purple-deep: #3A1B5E;
+  --purple-light: #7B4DB5;
+  --purple-muted: #6E4A9E;
+  --gold: #C8963E;
+  --gold-light: #D4AA5C;
+  --gold-pale: #F5E6C8;
+  --cream: #FAF7F2;
+  --white: #FFFFFF;
+  --gray-50: #F8F9FA;
+  --gray-100: #F1F3F5;
+  --gray-200: #E9ECEF;
+  --gray-300: #DEE2E6;
+  --gray-400: #ADB5BD;
+  --gray-500: #6C757D;
+  --gray-600: #495057;
+  --gray-700: #343A40;
+  --gray-800: #212529;
+  --red: #C0392B;
+  --green: #27AE60;
+  --amber: #E67E22;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--gray-800);
+  background: var(--white);
+  overflow-x: hidden;
+  line-height: 1.65;
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ===== NAVIGATION ===== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(91,45,142,0.08);
+  transition: all 0.4s ease;
+}
+nav.scrolled {
+  box-shadow: 0 1px 24px rgba(91,45,142,0.08);
+}
+.nav-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--purple);
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-logo-mark {
+  width: 28px;
+  height: 28px;
+  background: var(--purple);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+}
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--gray-500);
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+  letter-spacing: 0.01em;
+}
+.nav-links a:hover, .nav-links a.active {
+  color: var(--purple);
+  background: rgba(91,45,142,0.06);
+}
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--purple);
+  margin: 4px 0;
+  transition: 0.3s;
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  background: var(--purple-deep);
+  overflow: hidden;
+  padding: 120px 40px 80px;
+}
+.hero-bg-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image:
+    radial-gradient(circle at 20% 50%, var(--gold) 1px, transparent 1px),
+    radial-gradient(circle at 80% 20%, var(--gold) 1px, transparent 1px),
+    radial-gradient(circle at 60% 80%, var(--gold) 1px, transparent 1px);
+  background-size: 80px 80px, 60px 60px, 100px 100px;
+}
+.hero-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,150,62,0.12) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse-glow 6s ease-in-out infinite;
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.3s forwards;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.5s forwards;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: 28px auto;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.65s forwards;
+}
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+  margin-bottom: 12px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.75s forwards;
+}
+.hero-date {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--gold-light);
+  letter-spacing: 0.08em;
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.85s forwards;
+}
+.hero-countdown {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.95s forwards;
+}
+.countdown-unit {
+  text-align: center;
+}
+.countdown-num {
+  font-family: var(--font-mono);
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1;
+  display: block;
+}
+.countdown-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.4);
+  margin-top: 6px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(200,150,62,0.12);
+  border: 1px solid rgba(200,150,62,0.25);
+  padding: 8px 18px;
+  border-radius: 100px;
+  font-size: 0.78rem;
+  color: var(--gold-light);
+  opacity: 0;
+  animation: fadeUp 0.8s 1.05s forwards;
+}
+.hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: blink 2s infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: fadeUp 0.8s 1.2s forwards;
+}
+.hero-scroll-indicator span {
+  display: block;
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  margin: 0 auto;
+  animation: scroll-line 2s ease-in-out infinite;
+}
+@keyframes scroll-line {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 100px 40px;
+}
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--purple);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--gray-500);
+  max-width: 640px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+.section-dark {
+  background: var(--purple-deep);
+  color: var(--white);
+}
+.section-dark .section-title { color: var(--white); }
+.section-dark .section-subtitle { color: rgba(255,255,255,0.55); }
+.section-cream { background: var(--cream); }
+.section-gray { background: var(--gray-50); }
+
+/* ===== EXECUTIVE SUMMARY ===== */
+.exec-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.exec-text p {
+  color: var(--gray-600);
+  font-size: 1.02rem;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+.exec-text strong { color: var(--purple); }
+.glance-table {
+  background: var(--white);
+  border-radius: 16px;
+  border: 1px solid var(--gray-200);
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+}
+.glance-table-header {
+  padding: 20px 28px;
+  background: var(--purple);
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.glance-row {
+  display: flex;
+  padding: 14px 28px;
+  border-bottom: 1px solid var(--gray-100);
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+.glance-row:hover { background: var(--gray-50); }
+.glance-row:last-child { border-bottom: none; }
+.glance-key {
+  width: 140px;
+  flex-shrink: 0;
+  font-weight: 600;
+  color: var(--purple);
+  font-size: 0.82rem;
+}
+.glance-val {
+  color: var(--gray-600);
+  font-size: 0.88rem;
+}
+
+/* ===== VENUES ===== */
+.venue-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.venue-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 20px;
+  padding: 0;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+.venue-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(91,45,142,0.1);
+}
+.venue-card.recommended {
+  border-color: var(--gold);
+  box-shadow: 0 4px 24px rgba(200,150,62,0.12);
+}
+.venue-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--gold);
+  color: var(--purple-deep);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+  z-index: 2;
+}
+.venue-header {
+  padding: 32px 28px 20px;
+  position: relative;
+}
+.venue-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--purple);
+  margin-bottom: 4px;
+}
+.venue-header .venue-type {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--gray-400);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.venue-stars {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 10px;
+  font-size: 0.82rem;
+  color: var(--gold);
+}
+.venue-stars span {
+  color: var(--gray-400);
+  font-size: 0.78rem;
+  margin-left: 4px;
+}
+.venue-details {
+  padding: 0 28px 28px;
+}
+.venue-detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--gray-100);
+  font-size: 0.84rem;
+}
+.venue-detail-row:last-child { border-bottom: none; }
+.venue-detail-key {
+  color: var(--gray-400);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+.venue-detail-val {
+  color: var(--purple);
+  font-weight: 500;
+  text-align: right;
+  font-size: 0.84rem;
+}
+.venue-vibe {
+  padding: 16px 28px;
+  background: var(--gray-50);
+  font-size: 0.84rem;
+  color: var(--gray-600);
+  font-style: italic;
+  line-height: 1.6;
+}
+.venue-cost {
+  padding: 20px 28px;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--purple);
+  border-top: 1px solid var(--gray-100);
+}
+.venue-cost small {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--gray-400);
+  font-weight: 400;
+  display: block;
+  margin-top: 2px;
+}
+.venue-note {
+  margin-top: 24px;
+  padding: 20px 24px;
+  background: var(--cream);
+  border-radius: 12px;
+  border-left: 3px solid var(--gold);
+  font-size: 0.88rem;
+  color: var(--gray-600);
+  line-height: 1.7;
+}
+.venue-note strong { color: var(--purple); }
+
+/* ===== SCHEDULE ===== */
+.schedule-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 700px;
+}
+.schedule-item {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.schedule-item:last-child { border-bottom: none; }
+.schedule-time {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--gold);
+  white-space: nowrap;
+  min-width: 90px;
+  padding-top: 2px;
+  font-weight: 600;
+}
+.schedule-desc {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.5;
+}
+.schedule-desc strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
+/* ===== BUDGET ===== */
+.budget-table-wrap {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.03);
+  max-width: 700px;
+}
+.budget-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.budget-table thead {
+  background: var(--purple);
+}
+.budget-table th {
+  padding: 16px 24px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  text-align: left;
+}
+.budget-table th:last-child { text-align: right; }
+.budget-table td {
+  padding: 14px 24px;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--gray-100);
+}
+.budget-table td:first-child {
+  color: var(--gray-600);
+  font-weight: 400;
+}
+.budget-table td:last-child {
+  text-align: right;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--purple);
+}
+.budget-table tr:last-child td { border-bottom: none; }
+.budget-table .total-row {
+  background: var(--cream);
+}
+.budget-table .total-row td {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--purple);
+  border-bottom: none;
+}
+.budget-note {
+  margin-top: 20px;
+  padding: 20px 24px;
+  background: var(--cream);
+  border-radius: 12px;
+  border-left: 3px solid var(--gold);
+  font-size: 0.88rem;
+  color: var(--gray-600);
+  line-height: 1.7;
+  max-width: 700px;
+}
+.budget-note strong { color: var(--purple); }
+
+/* ===== MASTER CHECKLIST ===== */
+.checklist-section {
+  margin-bottom: 40px;
+}
+.checklist-section:last-child { margin-bottom: 0; }
+.checklist-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--gray-100);
+}
+.checklist-header-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(91,45,142,0.08);
+  color: var(--purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.checklist-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--purple);
+}
+.checklist-header .checklist-date {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-left: auto;
+  white-space: nowrap;
+}
+.checklist-progress {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--gray-400);
+  white-space: nowrap;
+}
+.checklist-items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.checklist-item:hover {
+  background: var(--gray-50);
+}
+.checklist-item.checked {
+  opacity: 0.55;
+}
+.checklist-item.checked .checklist-text {
+  text-decoration: line-through;
+  color: var(--gray-400);
+}
+.checklist-checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 2px solid var(--gray-300);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 1px;
+}
+.checklist-item.checked .checklist-checkbox {
+  background: var(--purple);
+  border-color: var(--purple);
+}
+.checklist-checkbox svg {
+  width: 12px;
+  height: 12px;
+  stroke: white;
+  stroke-width: 2.5;
+  fill: none;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.checklist-item.checked .checklist-checkbox svg {
+  opacity: 1;
+  transform: scale(1);
+}
+.checklist-text {
+  font-size: 0.9rem;
+  color: var(--gray-600);
+  line-height: 1.55;
+  transition: all 0.2s ease;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 48px 40px;
+  background: var(--purple-deep);
+  color: rgba(255,255,255,0.35);
+  font-size: 0.82rem;
+}
+footer strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .exec-grid { grid-template-columns: 1fr; }
+  .venue-grid { grid-template-columns: 1fr; }
+  #why .section-inner > div[style*="grid-template-columns:1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
+  #marketing > .section-inner > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: block; }
+  nav.menu-open .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--gray-200);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  }
+  section { padding: 64px 24px; }
+  .hero { padding: 100px 24px 60px; }
+  .checklist-header .checklist-date { display: none; }
+}
+
+@media (max-width: 600px) {
+  .hero-countdown { gap: 16px; }
+  .countdown-num { font-size: 1.8rem; }
+  .schedule-item { gap: 16px; }
+  .schedule-time { min-width: 70px; font-size: 0.78rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav id="mainNav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-mark">CV</div>
+      Trivia Night Plan
+    </div>
+    <ul class="nav-links">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#why">Why</a></li>
+      <li><a href="#marketing">Marketing</a></li>
+      <li><a href="#venues">Venues</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#budget">Budget</a></li>
+      <li><a href="#checklist">Checklist</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Caruso Ventures &times; Boulder Startup Week 2026</div>
+    <h1 class="hero-title">Young Leaders<br><em>Trivia Night</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-subtitle">An evening of trivia, drinks, and connections for Boulder's next generation of builders.</p>
+    <p class="hero-date">May 5 - 7, 2026 (TBD) &bull; 5:00 PM - 7:00 PM</p>
+    <div class="hero-countdown" id="countdown">
+      <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><div class="countdown-label">Days</div></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><div class="countdown-label">Hours</div></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><div class="countdown-label">Minutes</div></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><div class="countdown-label">Seconds</div></div>
+    </div>
+    <div class="hero-badge"><span class="hero-badge-dot"></span> Run by Connor &amp; Gib</div>
+  </div>
+  <div class="hero-scroll-indicator"><span></span></div>
+</section>
+
+<!-- ===== OVERVIEW ===== -->
+<section id="overview" class="section-cream">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">01 &mdash; Overview</div>
+      <h2 class="section-title">The Quick Rundown</h2>
+    </div>
+    <div class="exec-grid">
+      <div class="exec-text reveal reveal-delay-1">
+        <p>
+          Caruso Ventures hosts a <strong>casual trivia night during Boulder Startup Week</strong> for young professionals (~30 and under, or generally early in their careers) &mdash; founders, operators, and investors who are just getting started. Drinks are on us. Trivia keeps the energy up and makes sure nobody stands in a corner.
+        </p>
+        <p>
+          <strong>4 rounds of trivia</strong> (General Knowledge, VC & Startups, Boulder & Colorado, Wild Card), a trivia host sourced from our network, and a $1,000 budget that goes almost entirely to a bar tab. Teams are randomized at the door so everyone meets someone new.
+        </p>
+      </div>
+      <div class="glance-table reveal reveal-delay-2">
+        <div class="glance-table-header">At a Glance</div>
+        <div class="glance-row"><div class="glance-key">Event</div><div class="glance-val">Young Leaders Trivia Night</div></div>
+        <div class="glance-row"><div class="glance-key">When</div><div class="glance-val">May 5-7, 2026 (during BSW)</div></div>
+        <div class="glance-row"><div class="glance-key">Time</div><div class="glance-val">5:00 PM doors &bull; 5:45 PM trivia &bull; 7:00 PM wrap</div></div>
+        <div class="glance-row"><div class="glance-key">Audience</div><div class="glance-val">Young professionals (~30 &amp; under, early-career)</div></div>
+        <div class="glance-row"><div class="glance-key">Capacity</div><div class="glance-val">40-60 people</div></div>
+        <div class="glance-row"><div class="glance-key">Budget</div><div class="glance-val">$1,000 max (mostly bar tab)</div></div>
+        <div class="glance-row"><div class="glance-key">Leads</div><div class="glance-val">Connor &amp; Gib</div></div>
+        <div class="glance-row"><div class="glance-key">Registration</div><div class="glance-val">Custom website (built by Caruso team)</div></div>
+        <div class="glance-row"><div class="glance-key">Trivia Host</div><div class="glance-val">Sourced from our network (no cost)</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY ===== -->
+<section id="why">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">02 &mdash; Why We're Doing This</div>
+      <h2 class="section-title">The Goals</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px;" class="reveal reveal-delay-1">
+      <div style="background:var(--white); border:1px solid var(--gray-200); border-radius:16px; padding:28px 24px; position:relative; overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);"></div>
+        <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:12px;">01</div>
+        <h3 style="font-family:var(--font-display);font-size:1.1rem;color:var(--purple);margin-bottom:8px;">Brand Positioning</h3>
+        <p style="font-size:0.86rem;color:var(--gray-500);line-height:1.6;">Put Caruso Ventures on the map with the next generation of Boulder's builders and investors &mdash; before they're running big funds or scaling companies.</p>
+      </div>
+      <div style="background:var(--white); border:1px solid var(--gray-200); border-radius:16px; padding:28px 24px; position:relative; overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);"></div>
+        <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:12px;">02</div>
+        <h3 style="font-family:var(--font-display);font-size:1.1rem;color:var(--purple);margin-bottom:8px;">Community Building</h3>
+        <p style="font-size:0.86rem;color:var(--gray-500);line-height:1.6;">Create a repeatable, signature event. Year 1 is the foundation &mdash; "Caruso Trivia Night" should become something people circle on their calendar every BSW.</p>
+      </div>
+      <div style="background:var(--white); border:1px solid var(--gray-200); border-radius:16px; padding:28px 24px; position:relative; overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);"></div>
+        <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:12px;">03</div>
+        <h3 style="font-family:var(--font-display);font-size:1.1rem;color:var(--purple);margin-bottom:8px;">Relationships & Deal Flow</h3>
+        <p style="font-size:0.86rem;color:var(--gray-500);line-height:1.6;">Every person in the room is a potential co-investor, deal source, future founder, or hire. The trivia format forces real connections, not just business card swaps.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MARKETING ===== -->
+<section id="marketing" class="section-gray">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">03 &mdash; Marketing & Promotion</div>
+      <h2 class="section-title">How We Fill the Room</h2>
+      <p class="section-subtitle">Target audience: young professionals roughly 30 and under, or generally early in their careers &mdash; founders, operators, VCs, analysts, emerging fund managers.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+      <div class="reveal reveal-delay-1" style="background:var(--white); border:1px solid var(--gray-200); border-radius:16px; padding:28px 24px;">
+        <h4 style="font-family:var(--font-display);font-size:1.05rem;color:var(--purple);margin-bottom:14px;">Our Channels</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+          <li style="font-size:0.88rem;color:var(--gray-600);padding-left:18px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--gold);display:block;"></span><strong style="color:var(--purple);">Personal outreach:</strong> Connor and Gib text, DM, and email the people they want in the room</li>
+          <li style="font-size:0.88rem;color:var(--gray-600);padding-left:18px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--gold);display:block;"></span><strong style="color:var(--purple);">Sean from Endeavor:</strong> Loop him in early to co-promote and bring his network</li>
+          <li style="font-size:0.88rem;color:var(--gray-600);padding-left:18px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--gold);display:block;"></span><strong style="color:var(--purple);">LinkedIn:</strong> Post from Caruso Ventures page + personal accounts. Make it shareable.</li>
+          <li style="font-size:0.88rem;color:var(--gray-600);padding-left:18px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--gold);display:block;"></span><strong style="color:var(--purple);">Slack:</strong> Post in #boulderstartups, Colorado VC channels, founder groups</li>
+          <li style="font-size:0.88rem;color:var(--gray-600);padding-left:18px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--gold);display:block;"></span><strong style="color:var(--purple);">Custom registration website:</strong> Built by our team for RSVPs. Cap at 60, then waitlist.</li>
+        </ul>
+      </div>
+      <div class="reveal reveal-delay-2" style="background:var(--white); border:1px solid var(--gray-200); border-radius:16px; padding:28px 24px;">
+        <h4 style="font-family:var(--font-display);font-size:1.05rem;color:var(--purple);margin-bottom:14px;">Getting on BSW's Calendar</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+          <li style="font-size:0.88rem;color:var(--gray-600);padding-left:18px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--gold);display:block;"></span><strong style="color:var(--purple);">Submit via boulderstartupweek.com:</strong> BSW has an open submission process. Anyone can host an event &mdash; submit event name, description, date, time, and venue.</li>
+          <li style="font-size:0.88rem;color:var(--gray-600);padding-left:18px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--gold);display:block;"></span><strong style="color:var(--purple);">Timeline:</strong> Submit ASAP once venue is locked. Listings go live ~3-4 weeks before BSW.</li>
+          <li style="font-size:0.88rem;color:var(--gray-600);padding-left:18px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--gold);display:block;"></span><strong style="color:var(--purple);">Why it matters:</strong> BSW's calendar gets 5,000+ views during the week. Free exposure to exactly the audience we want. Our event shows up alongside panels, workshops, and happy hours.</li>
+          <li style="font-size:0.88rem;color:var(--gray-600);padding-left:18px;position:relative;line-height:1.55;"><span style="position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--gold);display:block;"></span><strong style="color:var(--purple);">Link to our registration site:</strong> The BSW listing can point directly to our custom RSVP page.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VENUES ===== -->
+<section id="venues">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">04 &mdash; Venues</div>
+      <h2 class="section-title">Three Options, One Pick</h2>
+      <p class="section-subtitle">Rayback is the top choice. The Marion space has its own bar, patio, mic, and projector built in. Strategy: negotiate $0 rental with an $800-1,000 bar minimum.</p>
+    </div>
+    <div class="venue-grid">
+
+      <!-- Rayback Collective (Recommended) -->
+      <div class="venue-card recommended reveal reveal-delay-1">
+        <div class="venue-badge">Recommended</div>
+        <div class="venue-header">
+          <h3>Rayback Collective</h3>
+          <div class="venue-type">The Marion Space</div>
+          <div class="venue-stars">&#9733;&#9733;&#9733;&#9733;&#9733; 4.6 <span>(2,600+ reviews)</span></div>
+        </div>
+        <div class="venue-details">
+          <div class="venue-detail-row"><span class="venue-detail-key">Address</span><span class="venue-detail-val">2775 Valmont Rd</span></div>
+          <div class="venue-detail-row"><span class="venue-detail-key">Capacity</span><span class="venue-detail-val">~50 indoor / 100+ patio</span></div>
+          <div class="venue-detail-row"><span class="venue-detail-key">AV Included</span><span class="venue-detail-val">Mic, speaker, projector</span></div>
+          <div class="venue-detail-row"><span class="venue-detail-key">Vibe</span><span class="venue-detail-val">Peak Boulder</span></div>
+        </div>
+        <div class="venue-vibe">"Best 'Boulder' vibe of any option. Own bar + patio. Only downside is ~10 min drive from Pearl St."</div>
+        <div class="venue-cost">$0 rental <small>Negotiate with $800-1,000 bar minimum</small></div>
+      </div>
+
+      <!-- Avanti -->
+      <div class="venue-card reveal reveal-delay-2">
+        <div class="venue-header">
+          <h3>Avanti Boulder</h3>
+          <div class="venue-type">Food Hall &amp; Bar</div>
+          <div class="venue-stars">&#9733;&#9733;&#9733;&#9733;&#9734; 4.5 <span>(Google)</span></div>
+        </div>
+        <div class="venue-details">
+          <div class="venue-detail-row"><span class="venue-detail-key">Address</span><span class="venue-detail-val">1401 Pearl St</span></div>
+          <div class="venue-detail-row"><span class="venue-detail-key">Capacity</span><span class="venue-detail-val">Semi-private area</span></div>
+          <div class="venue-detail-row"><span class="venue-detail-key">AV Included</span><span class="venue-detail-val">No</span></div>
+          <div class="venue-detail-row"><span class="venue-detail-key">Vibe</span><span class="venue-detail-val">Trendy, walkable</span></div>
+        </div>
+        <div class="venue-vibe">"Great Pearl St location. Multi-vendor food options. No AV included, would need to rent."</div>
+        <div class="venue-cost">TBD <small>Call for event pricing: (720) 343-7757</small></div>
+      </div>
+
+      <!-- OAK at Fourteenth / The Kitchen -->
+      <div class="venue-card reveal reveal-delay-3">
+        <div class="venue-header">
+          <h3>OAK at Fourteenth</h3>
+          <div class="venue-type">Pearl St Mall</div>
+          <div class="venue-stars">&#9733;&#9733;&#9733;&#9733;&#9734; 4.4 <span>(Google)</span></div>
+        </div>
+        <div class="venue-details">
+          <div class="venue-detail-row"><span class="venue-detail-key">Address</span><span class="venue-detail-val">1400 Pearl St Mall</span></div>
+          <div class="venue-detail-row"><span class="venue-detail-key">Capacity</span><span class="venue-detail-val">Private dining area</span></div>
+          <div class="venue-detail-row"><span class="venue-detail-key">AV Included</span><span class="venue-detail-val">Ask</span></div>
+          <div class="venue-detail-row"><span class="venue-detail-key">Vibe</span><span class="venue-detail-val">Upscale casual</span></div>
+        </div>
+        <div class="venue-vibe">"Pearl St Mall location, good for a polished feel. Likely higher minimum spend."</div>
+        <div class="venue-cost">TBD <small>Call for event pricing: (303) 444-3622</small></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== SCHEDULE ===== -->
+<section id="schedule" class="section-dark">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">05 &mdash; Schedule</div>
+      <h2 class="section-title">Run of Show</h2>
+      <p class="section-subtitle">Two hours, tight and simple. Doors, drinks, trivia, done.</p>
+    </div>
+    <div class="schedule-timeline reveal reveal-delay-1">
+      <div class="schedule-item">
+        <div class="schedule-time">4:30 PM</div>
+        <div class="schedule-desc"><strong>Connor & Gib arrive</strong> &mdash; setup signage, name tags, AV check, table layout</div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">5:00 PM</div>
+        <div class="schedule-desc"><strong>Doors open</strong> &mdash; guests arrive, drinks flowing, background music on, networking</div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">5:40 PM</div>
+        <div class="schedule-desc"><strong>Connor gives a quick welcome</strong> &mdash; who we are, why we're here, introduces trivia host</div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">5:45 PM</div>
+        <div class="schedule-desc"><strong>Trivia starts</strong> &mdash; 4 rounds: General Knowledge, VC & Startups, Boulder & Colorado, Wild Card</div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">7:00 PM</div>
+        <div class="schedule-desc"><strong>Final scores, thank the room</strong> &mdash; guests free to keep hanging out on their own</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BUDGET ===== -->
+<section id="budget" class="section-cream">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">06 &mdash; Budget</div>
+      <h2 class="section-title">$1,000 Total</h2>
+      <p class="section-subtitle">Almost everything goes to the bar tab. Trivia host is free (sourced from our network).</p>
+    </div>
+    <div class="budget-table-wrap reveal reveal-delay-1">
+      <table class="budget-table">
+        <thead><tr><th>Item</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Bar tab (venue minimum)</td><td>$800 - $1,000</td></tr>
+          <tr><td>Venue rental</td><td>$0 (waived)</td></tr>
+          <tr><td>Trivia host</td><td>$0 (from our network)</td></tr>
+          <tr><td>Printing (name tags, answer sheets, signage)</td><td>~$20</td></tr>
+          <tr><td>Pens (~30)</td><td>~$15</td></tr>
+          <tr><td>AV rental backup (if needed)</td><td>$40 - $75</td></tr>
+          <tr class="total-row"><td>Total</td><td>$1,000 max</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="budget-note reveal reveal-delay-2">
+      <strong>Strategy:</strong> Negotiate venue rental waived in exchange for a guaranteed $800-1,000 bar tab. This is the whole budget play.
+    </div>
+  </div>
+</section>
+
+<!-- ===== MASTER CHECKLIST ===== -->
+<section id="checklist">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">07 &mdash; Master Checklist</div>
+      <h2 class="section-title">Everything We Need to Do</h2>
+      <p class="section-subtitle">Click to check off items as you go. Progress saves automatically.</p>
+    </div>
+
+    <!-- This Week -->
+    <div class="checklist-section reveal reveal-delay-1" data-group="this-week">
+      <div class="checklist-header">
+        <div class="checklist-header-icon">1</div>
+        <h3>This Week</h3>
+        <div class="checklist-date">Mar 24 - 28</div>
+        <div class="checklist-progress"></div>
+      </div>
+      <div class="checklist-items">
+        <div class="checklist-item" data-key="tw-1"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Call Rayback Collective for May 5-7 availability for The Marion space</div></div>
+        <div class="checklist-item" data-key="tw-2"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Call Avanti Boulder (720-343-7757) as backup venue option</div></div>
+        <div class="checklist-item" data-key="tw-3"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Call OAK at Fourteenth (303-444-3622) as backup venue option</div></div>
+        <div class="checklist-item" data-key="tw-4"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Negotiate venue rental waived with $800-1,000 bar tab commitment</div></div>
+        <div class="checklist-item" data-key="tw-5"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Lock down a trivia host from our network</div></div>
+        <div class="checklist-item" data-key="tw-6"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Start building the registration website</div></div>
+      </div>
+    </div>
+
+    <!-- 2-4 Weeks Out -->
+    <div class="checklist-section reveal reveal-delay-2" data-group="weeks-2-4">
+      <div class="checklist-header">
+        <div class="checklist-header-icon">2</div>
+        <h3>2-4 Weeks Out</h3>
+        <div class="checklist-date">Apr 1 - 18</div>
+        <div class="checklist-progress"></div>
+      </div>
+      <div class="checklist-items">
+        <div class="checklist-item" data-key="w24-1"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Finalize venue contract and deposit</div></div>
+        <div class="checklist-item" data-key="w24-2"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Submit event to BSW official calendar</div></div>
+        <div class="checklist-item" data-key="w24-3"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Launch registration website</div></div>
+        <div class="checklist-item" data-key="w24-4"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Loop in Sean from Endeavor to co-promote and bring his network</div></div>
+        <div class="checklist-item" data-key="w24-5"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Start inviting from personal networks (text, DM, email)</div></div>
+        <div class="checklist-item" data-key="w24-6"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Post on LinkedIn (Caruso page + personal accounts)</div></div>
+        <div class="checklist-item" data-key="w24-7"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Post in Slack communities (#boulderstartups, CO VC channels)</div></div>
+        <div class="checklist-item" data-key="w24-8"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Begin drafting trivia questions (25 used + 5 backup)</div></div>
+      </div>
+    </div>
+
+    <!-- 1-2 Weeks Out -->
+    <div class="checklist-section reveal reveal-delay-1" data-group="weeks-1-2">
+      <div class="checklist-header">
+        <div class="checklist-header-icon">3</div>
+        <h3>1-2 Weeks Out</h3>
+        <div class="checklist-date">Apr 18 - May 1</div>
+        <div class="checklist-progress"></div>
+      </div>
+      <div class="checklist-items">
+        <div class="checklist-item" data-key="w12-1"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Test-run trivia questions with Gib for difficulty check</div></div>
+        <div class="checklist-item" data-key="w12-2"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Build trivia slide deck (Google Slides or Keynote)</div></div>
+        <div class="checklist-item" data-key="w12-3"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Prepare and print answer sheets</div></div>
+        <div class="checklist-item" data-key="w12-4"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Order/gather pens (~30)</div></div>
+        <div class="checklist-item" data-key="w12-5"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Print name tags with color dots for team randomization</div></div>
+        <div class="checklist-item" data-key="w12-6"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Make conversation starter cards for networking tables</div></div>
+        <div class="checklist-item" data-key="w12-7"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Print welcome signage</div></div>
+        <div class="checklist-item" data-key="w12-8"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Confirm AV setup with venue (mic, speaker, projector)</div></div>
+        <div class="checklist-item" data-key="w12-9"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">If venue lacks AV: rent speaker + mic from ListenUp Boulder (~$40-75/day)</div></div>
+        <div class="checklist-item" data-key="w12-10"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Create Spotify playlist for networking background music</div></div>
+        <div class="checklist-item" data-key="w12-11"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Send RSVP reminder email</div></div>
+      </div>
+    </div>
+
+    <!-- Day Before -->
+    <div class="checklist-section reveal reveal-delay-2" data-group="day-before">
+      <div class="checklist-header">
+        <div class="checklist-header-icon">4</div>
+        <h3>Day Before</h3>
+        <div class="checklist-date">May 4 (or day before event)</div>
+        <div class="checklist-progress"></div>
+      </div>
+      <div class="checklist-items">
+        <div class="checklist-item" data-key="db-1"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Final headcount confirmation with venue</div></div>
+        <div class="checklist-item" data-key="db-2"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Pack all materials: name tags, answer sheets, pens, signage, laptop, cables</div></div>
+        <div class="checklist-item" data-key="db-3"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Charge laptop, test slide deck, test any AV adapters</div></div>
+        <div class="checklist-item" data-key="db-4"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Confirm bar tab arrangement with venue</div></div>
+        <div class="checklist-item" data-key="db-5"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Send final reminder to RSVPs</div></div>
+      </div>
+    </div>
+
+    <!-- Day Of -->
+    <div class="checklist-section reveal reveal-delay-1" data-group="day-of">
+      <div class="checklist-header">
+        <div class="checklist-header-icon">5</div>
+        <h3>Day Of</h3>
+        <div class="checklist-date">Event Day</div>
+        <div class="checklist-progress"></div>
+      </div>
+      <div class="checklist-items">
+        <div class="checklist-item" data-key="do-1"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Connor & Gib arrive 4:30 PM for setup</div></div>
+        <div class="checklist-item" data-key="do-2"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Set up signage, name tags, table layout</div></div>
+        <div class="checklist-item" data-key="do-3"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Test AV: mic, speaker, projector, slides</div></div>
+        <div class="checklist-item" data-key="do-4"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Set up conversation starter cards on tables</div></div>
+        <div class="checklist-item" data-key="do-5"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">5:00 PM &mdash; Doors open, guests arrive, drinks flowing</div></div>
+        <div class="checklist-item" data-key="do-6"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">5:40 PM &mdash; Connor gives quick welcome</div></div>
+        <div class="checklist-item" data-key="do-7"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">5:45 PM &mdash; Trivia host takes the mic, game starts</div></div>
+        <div class="checklist-item" data-key="do-8"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">7:00 PM &mdash; Final scores announced, thank the room</div></div>
+      </div>
+    </div>
+
+    <!-- After Event -->
+    <div class="checklist-section reveal reveal-delay-2" data-group="after-event">
+      <div class="checklist-header">
+        <div class="checklist-header-icon">6</div>
+        <h3>After Event</h3>
+        <div class="checklist-date">Within 1 week</div>
+        <div class="checklist-progress"></div>
+      </div>
+      <div class="checklist-items">
+        <div class="checklist-item" data-key="ae-1"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Send thank-you email to all attendees (within 24 hours)</div></div>
+        <div class="checklist-item" data-key="ae-2"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Post 2-3 photos on LinkedIn, tag venue and BSW</div></div>
+        <div class="checklist-item" data-key="ae-3"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Connor sends personalized follow-ups to 5-10 best contacts</div></div>
+        <div class="checklist-item" data-key="ae-4"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Log new contacts in CRM</div></div>
+        <div class="checklist-item" data-key="ae-5"><div class="checklist-checkbox"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div><div class="checklist-text">Internal debrief with Gib: what worked, what to change for Year 2</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <strong>Caruso Ventures</strong> &bull; Young Leaders Trivia Night &bull; Boulder Startup Week 2026
+</footer>
+
+<script>
+// ===== COUNTDOWN =====
+(function() {
+  const target = new Date('2026-05-06T17:00:00-06:00');
+  function update() {
+    const now = new Date();
+    const diff = target - now;
+    if (diff <= 0) {
+      document.getElementById('cd-days').textContent = '0';
+      document.getElementById('cd-hours').textContent = '0';
+      document.getElementById('cd-mins').textContent = '0';
+      document.getElementById('cd-secs').textContent = '0';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent = d;
+    document.getElementById('cd-hours').textContent = h;
+    document.getElementById('cd-mins').textContent = m;
+    document.getElementById('cd-secs').textContent = s;
+  }
+  update();
+  setInterval(update, 1000);
+})();
+
+// ===== NAV SCROLL EFFECT =====
+(function() {
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+})();
+
+// ===== NAV HAMBURGER =====
+(function() {
+  const btn = document.getElementById('navHamburger');
+  const nav = document.getElementById('mainNav');
+  btn.addEventListener('click', function() {
+    nav.classList.toggle('menu-open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      nav.classList.remove('menu-open');
+    });
+  });
+})();
+
+// ===== ACTIVE NAV LINK =====
+(function() {
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', function() {
+    let current = '';
+    sections.forEach(function(section) {
+      const top = section.offsetTop - 120;
+      if (window.scrollY >= top) current = section.getAttribute('id');
+    });
+    links.forEach(function(link) {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  });
+})();
+
+// ===== SCROLL REVEAL =====
+(function() {
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    observer.observe(el);
+  });
+})();
+
+// ===== CHECKLIST WITH LOCALSTORAGE =====
+(function() {
+  const STORAGE_KEY = 'cv-trivia-checklist';
+
+  function loadState() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    } catch(e) {
+      return {};
+    }
+  }
+
+  function saveState(state) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch(e) {}
+  }
+
+  function updateProgress() {
+    document.querySelectorAll('.checklist-section').forEach(function(section) {
+      const items = section.querySelectorAll('.checklist-item');
+      const checked = section.querySelectorAll('.checklist-item.checked');
+      const progressEl = section.querySelector('.checklist-progress');
+      if (progressEl) {
+        progressEl.textContent = checked.length + ' / ' + items.length;
+        if (checked.length === items.length && items.length > 0) {
+          progressEl.style.color = 'var(--green)';
+        } else {
+          progressEl.style.color = '';
+        }
+      }
+    });
+  }
+
+  // Initialize from localStorage
+  const state = loadState();
+  document.querySelectorAll('.checklist-item').forEach(function(item) {
+    const key = item.getAttribute('data-key');
+    if (state[key]) {
+      item.classList.add('checked');
+    }
+
+    item.addEventListener('click', function() {
+      const currentState = loadState();
+      const isChecked = item.classList.toggle('checked');
+      if (isChecked) {
+        currentState[key] = true;
+      } else {
+        delete currentState[key];
+      }
+      saveState(currentState);
+      updateProgress();
+    });
+  });
+
+  updateProgress();
+})();
+</script>
+
+</body>
+</html>
